@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: berkeley-cds-app
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: berkeley-cds-app
+  template:
+    metadata:
+      labels:
+        app: berkeley-cds-app
+    spec:
+      containers:
+      - name: flask-app
+        image: 820064186646.dkr.ecr.ap-southeast-1.amazonaws.com/berkeley-cds-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          value: "redis-service"
+        - name: REDIS_PORT
+          value: "6379"
