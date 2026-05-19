@@ -8,8 +8,6 @@ terraform {
     }
   }
 
-  # Note: Keeping state local for now to simplify. 
-  # In a real-world scenario, we'd use the S3 buckets you listed (irfath-zota-bucket).
 }
 
 provider "aws" {
